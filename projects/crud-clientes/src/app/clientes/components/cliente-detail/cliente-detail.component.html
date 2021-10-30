@@ -1,0 +1,8 @@
+<p>Modulo: Clientes, component: detail</p>
+<pre *ngIf="cliente">
+    <span>Id: {{ cliente.id }}</span>
+    <span>Nome: {{ cliente.name}}</span>
+    <button (click)="goBack()">Voltar</button>
+    <button (click)="goDelete(cliente)">Excluir</button>
+    <button (click)="goEdit(cliente)">Editar</button>
+</pre>

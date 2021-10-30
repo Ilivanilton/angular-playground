@@ -1,0 +1,10 @@
+<p>Modulo: Clientes, component: create</p>
+<div>
+    <label>Cliente name:
+        <input #clienteName />
+    </label>
+    <button (click)="add(clienteName.value); clienteName.value=''">
+        Add
+    </button>
+    <button (click)="goBack()">voltar</button>
+</div>

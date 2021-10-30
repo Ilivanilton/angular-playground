@@ -1,0 +1,9 @@
+<p>Modulo: Clientes, component: index</p>
+<ul>
+    <li *ngFor="let c of clientes">
+        <a [routerLink]="['/clientes',c.id]">
+            {{ c.name }}
+        </a>
+    </li>
+</ul>
+<button [routerLink]="['/clientes','create']" >novo</button>

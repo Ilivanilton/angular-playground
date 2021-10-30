@@ -3,5 +3,126 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "crud-clientes": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/crud-clientes",
+      "sourceRoot": "projects/crud-clientes/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/crud-clientes",
+            "index": "projects/crud-clientes/src/index.html",
+            "main": "projects/crud-clientes/src/main.ts",
+            "polyfills": "projects/crud-clientes/src/polyfills.ts",
+            "tsConfig": "projects/crud-clientes/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/crud-clientes/src/favicon.ico",
+              "projects/crud-clientes/src/assets"
+            ],
+            "styles": [
+              "projects/crud-clientes/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/crud-clientes/src/environments/environment.ts",
+                  "with": "projects/crud-clientes/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "crud-clientes:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "crud-clientes:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "crud-clientes:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/crud-clientes/src/test.ts",
+            "polyfills": "projects/crud-clientes/src/polyfills.ts",
+            "tsConfig": "projects/crud-clientes/tsconfig.spec.json",
+            "karmaConfig": "projects/crud-clientes/karma.conf.js",
+            "assets": [
+              "projects/crud-clientes/src/favicon.ico",
+              "projects/crud-clientes/src/assets"
+            ],
+            "styles": [
+              "projects/crud-clientes/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/crud-clientes/tsconfig.app.json",
+              "projects/crud-clientes/tsconfig.spec.json",
+              "projects/crud-clientes/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/crud-clientes/e2e/protractor.conf.js",
+            "devServerTarget": "crud-clientes:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "crud-clientes:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "crud-clientes"
 }

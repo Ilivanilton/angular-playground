@@ -1,0 +1,12 @@
+<p>Modulo: Clientes, component: edit</p>
+<div *ngIf="cliente">
+   <div>
+       <label>id: </label>{{cliente.id}}
+   </div>
+   <div>
+       <label>name: </label>
+       <input [(ngModel)]="cliente.name" placeholder="name"/>
+   </div>
+   <button (click)="save()">Save</button>
+   <button (click)="goToIndex()">voltar</button>
+</div>

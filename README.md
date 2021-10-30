@@ -1,7 +1,22 @@
+crud-clientes
+  - Exemplo de CRUD
+  - ex. de organização de pastas do modulo
+  - in-memory-db
+
+dynamic-component
+  - implementado exempo do angular;
+  - exemplo de como varer um array de forma dinamica pelo index (-1)
+
+
+
+
+
 //cria um workspace sem uma aplicacao
 ng new angular-playground --create-application=false
+
 //cria uma aplicacao no workspace
 ng g application crud-clientes --routing=true
+
 // start a aplicacao crud-clientes
 ng serve crud-clientes
 

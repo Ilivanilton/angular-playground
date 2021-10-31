@@ -242,6 +242,126 @@
           }
         }
       }
+    },
+    "clean-architecture": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/clean-architecture",
+      "sourceRoot": "projects/clean-architecture/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/clean-architecture",
+            "index": "projects/clean-architecture/src/index.html",
+            "main": "projects/clean-architecture/src/main.ts",
+            "polyfills": "projects/clean-architecture/src/polyfills.ts",
+            "tsConfig": "projects/clean-architecture/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/clean-architecture/src/favicon.ico",
+              "projects/clean-architecture/src/assets"
+            ],
+            "styles": [
+              "projects/clean-architecture/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/clean-architecture/src/environments/environment.ts",
+                  "with": "projects/clean-architecture/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "clean-architecture:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "clean-architecture:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "clean-architecture:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/clean-architecture/src/test.ts",
+            "polyfills": "projects/clean-architecture/src/polyfills.ts",
+            "tsConfig": "projects/clean-architecture/tsconfig.spec.json",
+            "karmaConfig": "projects/clean-architecture/karma.conf.js",
+            "assets": [
+              "projects/clean-architecture/src/favicon.ico",
+              "projects/clean-architecture/src/assets"
+            ],
+            "styles": [
+              "projects/clean-architecture/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/clean-architecture/tsconfig.app.json",
+              "projects/clean-architecture/tsconfig.spec.json",
+              "projects/clean-architecture/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/clean-architecture/e2e/protractor.conf.js",
+            "devServerTarget": "clean-architecture:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "clean-architecture:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "crud-clientes"

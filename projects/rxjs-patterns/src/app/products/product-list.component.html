@@ -22,9 +22,9 @@
       </div>
     </div>
 
-    <div class="table-responsive">
-      <table class="table mb-0"
-             *ngIf="products">
+    <div class="table-responsive"
+      *ngIf="products$ | async as products">
+      <table class="table mb-0">
         <thead>
           <tr>
             <th>Product</th>

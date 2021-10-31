@@ -7,6 +7,8 @@ dynamic-component
   - implementado exempo do angular;
   - exemplo de como varer um array de forma dinamica pelo index (-1)
 
+clean-architecture
+  - exemplo que demonstra uma possível implementachar da clean architeture
 
 
 

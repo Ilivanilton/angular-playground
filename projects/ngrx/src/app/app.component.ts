@@ -7,8 +7,9 @@ import { tap } from "rxjs/operators";
   selector: 'app-root',
   template: `
   <ul>
-  <li [routerLink]="['/']" routerLinkActive="router-link-active" ><button>/{{ count$ | async}}</button></li>
+    <li [routerLink]="['/']" routerLinkActive="router-link-active" ><button>/{{ count$ | async}}</button></li>
     <li [routerLink]="['/counter']" routerLinkActive="router-link-active" ><button>/counter</button></li>
+    <li [routerLink]="['/books']" routerLinkActive="router-link-active" ><button>/books</button></li>
   </ul>
   <router-outlet></router-outlet>
   `

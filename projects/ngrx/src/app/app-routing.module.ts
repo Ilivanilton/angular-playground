@@ -14,8 +14,8 @@ const routes: Routes = [
   },
   {
     path: 'movies',
-    loadChildren: () => import('./@modules/effects/effects.module')
-      .then(m => m.ExempleEffectsModule)
+    loadChildren: () => import('./@modules/movies/movie.module')
+      .then(m => m.MovieModule)
   }
 ];
 

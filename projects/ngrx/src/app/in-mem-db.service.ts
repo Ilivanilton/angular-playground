@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Movie } from './@modules/effects/movie.model';
+import { Movie } from './@modules/movies/movie.model';
 
 @Injectable({
   providedIn: 'root'

@@ -7,7 +7,15 @@ export const movieAction = createAction(
   props<{ movies: Movie[] }>()
 );
 
+export const moviesLoadedErrorAction = createAction(
+  '[Movies API] Movies Loaded Error'
+);
+
 export const movieReduce = createReducer(
   [],
-  on(movieAction, (state, { movies } ) => movies)
+  on(movieAction, (state, { movies } ) => movies),
+  on(moviesLoadedErrorAction, state => {
+    debugger
+    return state
+  })
 )

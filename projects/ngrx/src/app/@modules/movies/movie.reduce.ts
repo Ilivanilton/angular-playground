@@ -4,7 +4,7 @@ import { Movie } from "./movie.model";
 
 export const movieAction = createAction(
   '[Movies Api] Movies Loaded Success',
-  props<{ movies: Movie[] }>()
+  props<{ movies: ReadonlyArray<Movie> }>()
 );
 
 
@@ -13,7 +13,7 @@ export const moviesLoadedErrorAction = createAction(
 );
 
 
-const moviesInitialState: Movie[] = []
+const moviesInitialState: ReadonlyArray<Movie> = []
 
 
 export const movieReduce = createReducer(

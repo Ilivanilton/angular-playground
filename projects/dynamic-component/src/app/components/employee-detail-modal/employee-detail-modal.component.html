@@ -1,0 +1,44 @@
+<modal #ooo>
+    <h5 modal-title>Empregado {{employee?.name}}</h5>
+    <div modal-body>
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <th scope="row">Nome</th>
+                <td>{{employee?.name}}</td>
+            </tr>
+            <tr *ngIf="employee?.salary < 1000; else notBonus">
+                <th scope="row">Bonus</th>
+                <td>{{employee?.bonus}}</td>
+            </tr>
+            <ng-template [ngIf]="employee?.salary < 1000" [ngIfElse]="notBonus">
+                <tr>
+                    <th scope="row">Bonus</th>
+                    <td>{{employee?.bonus}}</td>
+                </tr>
+            </ng-template>
+            <ng-template #notBonus>
+                <tr>
+                    <th scope="row">Obs.:</th>
+                    <td>Funcionário não tem bônus</td>
+                </tr>
+            </ng-template>
+            </tbody>
+        </table>
+        <!--<div [ngSwitch]="employee?.bonus">-->
+            <!--<span *ngSwitchCase="10">Bônus baixo</span>-->
+            <!--&lt;!&ndash;<component *ngSwitchCase=""></component>&ndash;&gt;-->
+            <!--<ng-container *ngSwitchCase="100">Bônus médio</ng-container>-->
+            <!--<ng-container *ngSwitchCase="1000">Bônus alto</ng-container>-->
+        <!--</div>-->
+        <ng-container [ngSwitch]="employee?.bonus">
+            <span *ngSwitchCase="10">Bônus baixo</span>
+            <!--<component *ngSwitchCase=""></component>-->
+            <ng-container *ngSwitchCase="100">Bônus médio</ng-container>
+            <ng-container *ngSwitchCase="1000">Bônus alto</ng-container>
+        </ng-container>
+    </div>
+    <div modal-footer>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+</modal>

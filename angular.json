@@ -148,9 +148,14 @@
               "projects/dynamic-component/src/assets"
             ],
             "styles": [
-              "projects/dynamic-component/src/styles.scss"
+              "projects/dynamic-component/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {

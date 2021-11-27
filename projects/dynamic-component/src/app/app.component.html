@@ -1,0 +1,33 @@
+
+
+  <employee-list #employeeList></employee-list>
+<!--
+1 - Template - TemplateRef
+2 - Componentes (Dinamicos)
+-->
+
+<ng-template #template>
+  <p>Meu template funcionando!!!</p>
+  <employee-list></employee-list>
+</ng-template>
+
+<ng-template appGetViewContainer></ng-template>
+
+<modal-title>
+  <h5>Testando modal</h5>
+</modal-title>
+<modal-body>
+  <div>
+      corpo do modal
+  </div>
+</modal-body>
+<modal-footer>
+  <div>
+      rodapé
+  </div>
+</modal-footer>
+
+
+<div>
+  <app-ad-banner [ads]="ads"></app-ad-banner>
+</div>

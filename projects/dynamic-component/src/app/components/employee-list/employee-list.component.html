@@ -1,0 +1,85 @@
+<div class="container">
+    <alert-success [hidden]="!showMessageSuccess">
+        O empregado <strong>{{employee?.name}}</strong> foi cadastrado com sucesso!
+    </alert-success>
+    <div class="row">
+        <h1>Nossos empregados</h1>
+        <ng-container *ngIf="isLoading">
+            <ng-container *ngTemplateOutlet="loading"></ng-container>
+        </ng-container>
+
+        {{ data | date: 'fullDate' | uppercase}}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td colspan="4">
+                    <button class="btn btn-primary" (click)="openNewModal()">Novo empregado</button>
+                </td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <th>Salário</th>
+                <th>Bônus</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--ngcontainer vs ngtemplate-->
+            <!--attributes , estruturais-->
+
+
+            <ng-container *ngFor="let employee of employeeService.employees;let i=index;">
+                <tr [id]="'tr'+i">
+                    <!--<ng-container *ngIf="employee.salary > 1000">-->
+                    <td>
+                        <a href="javascript:void(0);" (click)="openDetailModal(employee)">
+                            {{employee.name}}
+                        </a>
+                    </td>
+                    <td [innerHtml]="employee.salary | myCurrency" [salaryColor]="employee.salary"></td>
+                    <!--<td [innerHtml]="employee.salary"-->
+                    <!--[ngClass]="{'salary-expensive': employee.salary > 20000, 'salary-cheap': employee.salary < 1000}"></td>-->
+                    <td>{{employee.bonus}}</td>
+                    <td>
+                        <a href="javascript:void(0)" (click)="openEditModal(employee)">Editar</a> |
+                        <a href="javascript:void(0)" (click)="openDestroyModal(employee)">Excluir</a>
+                    </td>
+                    <!--</ng-container>-->
+                </tr>
+            </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<employee-detail-modal [employee]="employeeToDetail"></employee-detail-modal>
+<employee-delete-modal [employee]="employeeToDelete" (onDestroy)="onDestroyEmployee($event)"></employee-delete-modal>
+
+<!-- <template id="template">
+    qualquer coisa
+</template> -->
+<!--
+ template = document.querySelector('#template')
+ elem.appendChild( template.content.cloneNode(true))
+-->
+<!-- div *ngFor-->
+    <!-- div *ngIf-->
+<!--
+<ng-template #myTemplate>
+    <p>Meu template</p>
+    <ng-container>
+        <p>Meu container</p>
+    </ng-container>
+</ng-template>
+
+<ng-container *ngIf="">
+    <ng-container>
+        <ng-container></ng-container>
+    </ng-container>
+    <p>Meu container</p>
+</ng-container> -->
+
+
+<ng-template #loading>
+    Carregando...
+</ng-template>

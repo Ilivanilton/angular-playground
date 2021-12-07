@@ -487,6 +487,132 @@
           }
         }
       }
+    },
+    "ngrx-beginner": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ngrx-beginner",
+      "sourceRoot": "projects/ngrx-beginner/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngrx-beginner",
+            "index": "projects/ngrx-beginner/src/index.html",
+            "main": "projects/ngrx-beginner/src/main.ts",
+            "polyfills": "projects/ngrx-beginner/src/polyfills.ts",
+            "tsConfig": "projects/ngrx-beginner/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/ngrx-beginner/src/favicon.ico",
+              "projects/ngrx-beginner/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/ngrx-beginner/src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/feather-icons/dist/feather.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngrx-beginner/src/environments/environment.ts",
+                  "with": "projects/ngrx-beginner/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngrx-beginner:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngrx-beginner:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngrx-beginner:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngrx-beginner/src/test.ts",
+            "polyfills": "projects/ngrx-beginner/src/polyfills.ts",
+            "tsConfig": "projects/ngrx-beginner/tsconfig.spec.json",
+            "karmaConfig": "projects/ngrx-beginner/karma.conf.js",
+            "assets": [
+              "projects/ngrx-beginner/src/favicon.ico",
+              "projects/ngrx-beginner/src/assets"
+            ],
+            "styles": [
+              "projects/ngrx-beginner/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngrx-beginner/tsconfig.app.json",
+              "projects/ngrx-beginner/tsconfig.spec.json",
+              "projects/ngrx-beginner/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ngrx-beginner/e2e/protractor.conf.js",
+            "devServerTarget": "ngrx-beginner:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngrx-beginner:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "crud-clientes"

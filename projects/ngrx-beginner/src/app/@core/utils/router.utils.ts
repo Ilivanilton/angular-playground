@@ -6,6 +6,7 @@ export const ROUTER_UTILS = {
     },
     posts: {
       root: 'posts',
+      create:'create'
     },
     auth: {
       root: 'auth',

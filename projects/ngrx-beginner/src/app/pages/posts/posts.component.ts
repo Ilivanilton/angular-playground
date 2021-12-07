@@ -1,3 +1,4 @@
+import { ROUTER_UTILS } from './../../@core/utils/router.utils';
 import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
@@ -18,9 +19,21 @@ import { selectAllPosts } from './store/posts.selectors';
     </div>
 
     <div>
+      <button class="btn btn-success"
+      [routerLink]="[path.posts.create]">+</button>
+    </div>
+
+    <div>
       <ul>
-        <li *ngFor="let post of posts$ | async">{{post.title}}</li>
+        <li *ngFor="let post of posts$ | async; let i=index">
+          {{post.title}}
+          <button type="button" class="btn btn-link" (click)="onDelete(post,i)">Dell</button>
+          <button class="btn btn-link"[routerLink]="[post.id]">Editar</button>
+        </li>
       </ul>
+    </div>
+    <div>
+      <router-outlet></router-outlet>
     </div>
 
   </main>
@@ -30,11 +43,16 @@ import { selectAllPosts } from './store/posts.selectors';
 export class PostsComponent implements OnInit {
 
   posts$: Observable<Post[]> = this.store.select(selectAllPosts);
+  path = ROUTER_UTILS.config
 
   constructor(private store: Store<AppState>){
     this.store.dispatch(PostActions.loadAllPosts());
   }
 
   ngOnInit(): void { }
+
+  onDelete(post: Post, idx:number){
+    this.store.dispatch(PostActions.deletePost({ post, idx }));
+  }
 
 }

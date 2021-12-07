@@ -1,5 +1,6 @@
 import { createFeatureSelector } from '@ngrx/store';
 import { createSelector } from '@ngrx/store';
+import { AppState } from '../../../store/app.reducers';
 import { ModuloPostsState } from './post.reducers';
 
 
@@ -24,4 +25,9 @@ export const selectModulePosts = createFeatureSelector<ModuloPostsState>('module
 export const selectAllPosts = createSelector(
   selectModulePosts,
   state => state.posts
+);
+
+export const selectIdPosts = createSelector(
+  selectAllPosts,
+  (posts,props) => ({...(posts.filter(p => p.id == props.id)[0])})
 );

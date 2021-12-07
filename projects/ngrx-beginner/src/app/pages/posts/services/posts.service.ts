@@ -16,5 +16,16 @@ export class PostsService {
     return this.http.get<Post[]>(this.url)
   }
 
+  create(post: Post): Observable<Post>{
+    return this.http.post<Post>(this.url,post)
+  }
+
+  delete(post: Post): Observable<boolean>{
+    return this.http.delete<boolean>(`${this.url}/${post.id}`)
+  }
+
+  put(post: Post): Observable<Post>{
+    return this.http.put<Post>(`${this.url}/${post.id}`,post)
+  }
 
 }

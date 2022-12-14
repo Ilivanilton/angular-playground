@@ -733,6 +733,126 @@
           }
         }
       }
+    },
+    "rxjs-padroes": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/rxjs-padroes",
+      "sourceRoot": "projects/rxjs-padroes/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/rxjs-padroes",
+            "index": "projects/rxjs-padroes/src/index.html",
+            "main": "projects/rxjs-padroes/src/main.ts",
+            "polyfills": "projects/rxjs-padroes/src/polyfills.ts",
+            "tsConfig": "projects/rxjs-padroes/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/rxjs-padroes/src/favicon.ico",
+              "projects/rxjs-padroes/src/assets"
+            ],
+            "styles": [
+              "projects/rxjs-padroes/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/rxjs-padroes/src/environments/environment.ts",
+                  "with": "projects/rxjs-padroes/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rxjs-padroes:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rxjs-padroes:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rxjs-padroes:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rxjs-padroes/src/test.ts",
+            "polyfills": "projects/rxjs-padroes/src/polyfills.ts",
+            "tsConfig": "projects/rxjs-padroes/tsconfig.spec.json",
+            "karmaConfig": "projects/rxjs-padroes/karma.conf.js",
+            "assets": [
+              "projects/rxjs-padroes/src/favicon.ico",
+              "projects/rxjs-padroes/src/assets"
+            ],
+            "styles": [
+              "projects/rxjs-padroes/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/rxjs-padroes/tsconfig.app.json",
+              "projects/rxjs-padroes/tsconfig.spec.json",
+              "projects/rxjs-padroes/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/rxjs-padroes/e2e/protractor.conf.js",
+            "devServerTarget": "rxjs-padroes:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rxjs-padroes:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "crud-clientes"

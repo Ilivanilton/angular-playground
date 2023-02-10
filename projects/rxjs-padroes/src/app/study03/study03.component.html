@@ -1,11 +1,13 @@
 <ng-container *ngIf="vm$ | async as vm">
-  <select>
-    <option [value]="'all'">all</option>
-    <option [value]="'cat1'">cat1</option>
+  <select (change)="onSelected($any($event.target).value)">
+    <option value="0">- Display All -</option>
+    <option *ngFor="let category of vm.categories" [value]="category.id">
+      {{ category.name }}
+    </option>
   </select>
   <ul>
     <li *ngFor="let product of vm.products">
-      {{product | productDesc}}
+      {{product | productAndCategory }}
     </li>
   </ul>
 </ng-container>

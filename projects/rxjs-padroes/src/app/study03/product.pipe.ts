@@ -11,3 +11,14 @@ export class ProductPipe implements PipeTransform {
   }
 
 }
+
+@Pipe({
+  name: 'productAndCategory'
+})
+export class ProductCategoryPipe implements PipeTransform {
+
+  transform(p: Product, ...args: unknown[]): string {
+    return `${p.productName} (${p.category})`;
+  }
+
+}

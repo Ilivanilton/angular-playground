@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Cliente } from '../clientes';
+import { Cliente } from './clientes';
 import { Study01Service } from "./study01.service";
 
 @Component({

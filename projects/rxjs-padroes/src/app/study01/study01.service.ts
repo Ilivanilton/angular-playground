@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { Cliente } from '../clientes';
+import { Cliente } from './clientes';
 
 @Injectable({
   providedIn: 'root'

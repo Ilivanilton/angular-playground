@@ -11,6 +11,7 @@ import { AppData } from './app-data';
 import { Study01Component } from './study01/study01.component';
 import { Study02Component } from './study02/study02.component';
 import { Study03Component } from './study03/study03.component';
+import { ProductPipe } from './study03/product.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { Study03Component } from './study03/study03.component';
     Study01Component,
     Study02Component,
     Study03Component,
+    ProductPipe,
   ],
   imports: [
     BrowserModule,

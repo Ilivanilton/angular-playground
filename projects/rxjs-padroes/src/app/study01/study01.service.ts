@@ -12,10 +12,10 @@ import { Cliente } from './clientes';
 export class Study01Service {
 
   private httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
-  private url = 'api/clientes' // ver in-mem-db.service.ts
+  private url = 'api/clients' // ver in-mem-db.service.ts
 
   cliente$ = this.http.get<Cliente[]>(this.url,this.httpOptions).pipe(
-    tap(data => console.log(data)),
+    // tap(data => console.log(data)),
     catchError(this.handleError),
     );
 
@@ -31,7 +31,7 @@ export class Study01Service {
       errorMessage = `Servidor retornou codigo ${err.status}: ${err.message}`;
     }
     console.warn(err);
-    return throwError(() => errorMessage)
+    return throwError(errorMessage)
   }
 
 }

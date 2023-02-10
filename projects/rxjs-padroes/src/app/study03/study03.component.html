@@ -1,1 +1,12 @@
-<p>study03 works!</p>
+<ng-container *ngIf="vm$ | async as vm">
+  <select>
+    <option [value]="'all'">all</option>
+    <option [value]="'cat1'">cat1</option>
+  </select>
+  <ul>
+    <li *ngFor="let product of vm.products">
+      {{product | productDesc}}
+    </li>
+  </ul>
+</ng-container>
+

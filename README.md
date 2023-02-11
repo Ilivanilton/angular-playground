@@ -10,7 +10,12 @@ dynamic-component
 clean-architecture
   - exemplo que demonstra uma possível implementachar da clean architeture
 
+// requerimento
+node 12.21.0
+npm 6.14.11
 
+// run
+npm run ng serve ngrx-beginner
 
 
 //cria um workspace sem uma aplicacao
